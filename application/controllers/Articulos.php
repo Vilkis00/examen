@@ -8,6 +8,8 @@ class Articulos extends CI_Controller {
     if (!$this->session->userdata("login")) {
 			redirect(base_url());
 		}
+    $this->load->helper(array('download','file','url','html','form'));
+    $this->folder = 'rutaimg/';
     $this->load->model("Articulos_model");
   }
 
@@ -32,17 +34,51 @@ class Articulos extends CI_Controller {
   }
 
   public function guardar(){
-    $this->Articulos_model->guardar($_POST);
+    $config['upload_path']= $this->folder;
+    $config['allowed_types']= 'png|jpg|jpeg';
+    $config['remove_spaces']= TRUE;
+    $config['max_size']= '2048';
+    $this->load->library('upload',$config);
+    if (!$this->upload->do_upload()) {
+      $dato = $this->upload->display_errors();
+      print_r($dato);
+    }
+    else {
+      $file_info = $this->upload->data();
+      $dato['categoria']= $this->input->post("categoria");
+      $dato['descripcion']= $this->input->post("descripcion");
+      $dato['precio']= $this->input->post("precio");
+      $dato['imagen']= $file_info['file_name'];
+      $this->Articulos_model->guardar($dato);
+    }
     redirect(base_url()."articulos");
   }
 
   public function actualizar(){
-    $this->Articulos_model->actualizar($_POST);
+    $config['upload_path']= $this->folder;
+    $config['allowed_types']= 'png|jpg|jpeg';
+    $config['remove_spaces']= TRUE;
+    $config['max_size']= '2048';
+    $this->load->library('upload',$config);
+    if (!$this->upload->do_upload()) {
+      $dato = $this->upload->display_errors();
+      print_r($dato);
+    }
+    else {
+      $file_info = $this->upload->data();
+      $dato['codigo']= $this->input->post("codigo");
+      $dato['categoria']= $this->input->post("categoria");
+      $dato['descripcion']= $this->input->post("descripcion");
+      $dato['precio']= $this->input->post("precio");
+      $dato['imagen']= $file_info['file_name'];
+      $this->Articulos_model->actualizar($dato);
+    }
     redirect(base_url()."articulos");
   }
 
-  public function eliminar($codigo){
+  public function eliminar($codigo, $ruta){
     $this->Articulos_model->eliminar($codigo);
+    unlink($this->folder . $ruta);
     redirect(base_url()."articulos");
   }
 }

@@ -2,7 +2,7 @@
   <div class="col-md-2"></div>
   <div class="col-md-8">
     <table class="table">
-      <form action="<?php echo base_url();?>articulos/actualizar" method="POST">
+      <form action="<?php echo base_url();?>articulos/actualizar" method="POST" enctype="multipart/form-data">
         <tr>
           <th>Codigo</th>
           <td><input readonly="" class="form-control" type="text" name="codigo" value="<?= $articulos->codigo ?>"></td>
@@ -19,6 +19,10 @@
         <tr>
           <th>Precio</th>
           <td><input class="form-control" type="text" name="precio" value="<?= $articulos->precio ?>"></td>
+        </tr>
+        <tr>
+          <th>Imagen</th>
+          <td><input class="form-control" type="file" name="userfile" value=""></td>
         </tr>
         <tr>
           <td><button type="submit" name="" class="btn btn-primary">Actualizar</button></td>

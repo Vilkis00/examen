@@ -14,9 +14,7 @@
         <form action="<?php echo base_url();?>login/log" method="post"><br>
           <input type="text" class="form-control" placeholder="Usuario" name="username"><br>
           <input type="password" class="form-control" placeholder="Password" name="password"><br>
-          <div class="col-xs-12">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar Sesión</button>
-          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar Sesión</button>
         </form>
       </div>
     </div>
