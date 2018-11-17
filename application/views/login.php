@@ -8,4 +8,17 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
   <body>
-    <a href="<?php echo base_url(); ?>login/logout"> Cerrar Sesión</a>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <form action="<?php echo base_url();?>login/log" method="post"><br>
+          <input type="text" class="form-control" placeholder="Usuario" name="username"><br>
+          <input type="password" class="form-control" placeholder="Password" name="password"><br>
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar Sesión</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
