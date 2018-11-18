@@ -10,9 +10,11 @@
   </head>
   <body>
     <div class="row">
-      <div class="col-md-10"></div>
-      <div class="col-md-2"><br>
+      <div class="col-md-9"></div>
+      <div class="col-md-1,5"><br>
         <a href="<?php echo base_url(); ?>usuarios/frmGuardar" class="btn btn-info">Agregar Usuario</a>
+      </div>
+      <div class="col-md-1,5"><br>&nbsp
         <a href="<?php echo base_url(); ?>login/logout" class="btn btn-danger">Cerrar Sesión</a>
       </div>
     </div>

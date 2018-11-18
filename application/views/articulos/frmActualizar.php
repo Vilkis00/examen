@@ -9,7 +9,14 @@
         </tr>
         <tr>
           <th>Categoria</th>
-          <td><input class="form-control" type="text" name="categoria" value="<?= $articulos->categoria ?>"></td>
+          <td><select class="custom-select" name="categoria">
+            <option value="<?= $id ?>"><?= $categoria ?></option>
+            <?php foreach ($categorias as $cat):?>
+              <?php if($categoria != $cat->descripcion):?>
+                <option value="<?= $cat->id ?>"><?= $cat->descripcion ?></option>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </select></td>
         </tr>
         <tr>
         <tr>

@@ -5,7 +5,11 @@
       <form action="<?php echo base_url();?>articulos/guardar" method="POST" enctype="multipart/form-data">
         <tr>
           <th>Categoria</th>
-          <td><input class="form-control" type="text" name="categoria" value=""></td>
+          <td><select class="custom-select" name="categoria">
+            <?php foreach ($categorias as $categoria):?>
+              <option value="<?= $categoria->id ?>"><?= $categoria->descripcion ?></option>
+            <?php endforeach; ?>
+          </select></td>
         </tr>
         <tr>
           <th>Descripcion</th>

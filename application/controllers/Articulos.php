@@ -21,13 +21,17 @@ class Articulos extends CI_Controller {
   }
 
   public function frmGuardar(){
+    $data['categorias'] = $this->Articulos_model->leerCategorias();
     $this->load->view("layouts/header");
-    $this->load->view("articulos/frmGuardar");
+    $this->load->view("articulos/frmGuardar", $data);
     $this->load->view("layouts/footer");
   }
 
-  public function frmActualizar($codigo){
+  public function frmActualizar($codigo, $id, $categoria){
     $data['articulos'] = $this->Articulos_model->leerEspecifico($codigo);
+    $data['categorias'] = $this->Articulos_model->leerCategorias();
+    $data['id'] = $id;
+    $data['categoria'] = $categoria;
     $this->load->view("layouts/header");
     $this->load->view("articulos/frmActualizar", $data);
     $this->load->view("layouts/footer");
