@@ -31,7 +31,7 @@ class Articulos extends CI_Controller {
     $data['articulos'] = $this->Articulos_model->leerEspecifico($codigo);
     $data['categorias'] = $this->Articulos_model->leerCategorias();
     $data['id'] = $id;
-    $data['categoria'] = $categoria;
+    $data['categoria'] = str_replace("%20"," ",$categoria);
     $this->load->view("layouts/header");
     $this->load->view("articulos/frmActualizar", $data);
     $this->load->view("layouts/footer");
@@ -41,7 +41,7 @@ class Articulos extends CI_Controller {
     $config['upload_path']= $this->folder;
     $config['allowed_types']= 'png|jpg|jpeg';
     $config['remove_spaces']= TRUE;
-    $config['max_size']= '2048';
+    //$config['max_size']= '2048';
     $this->load->library('upload',$config);
     if (!$this->upload->do_upload()) {
       $dato = $this->upload->display_errors();
@@ -62,7 +62,7 @@ class Articulos extends CI_Controller {
     $config['upload_path']= $this->folder;
     $config['allowed_types']= 'png|jpg|jpeg';
     $config['remove_spaces']= TRUE;
-    $config['max_size']= '2048';
+    //$config['max_size']= '2048';
     $this->load->library('upload',$config);
     if (!$this->upload->do_upload()) {
       $dato = $this->upload->display_errors();

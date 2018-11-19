@@ -36,7 +36,7 @@
             <td><?= $articulo->precio;?></td>
             <td><img src="<?= "rutaimg/" . $articulo->imagen;?>" width="100px" height="100px"></td>
             <td>
-              <a href="<?php echo base_url()?>articulos/frmActualizar/<?php echo $articulo->codigo;?>/<?php echo $articulo->id ?>/<?php echo $articulo->categoria ?>" class="btn btn-outline-warning"><span class="fas fa-pen"></span></a>
+              <a href="<?php echo base_url()?>articulos/frmActualizar/<?php echo $articulo->codigo;?>/<?php echo $articulo->id ?>/<?php echo str_replace(" ","%20",$articulo->categoria) ?>" class="btn btn-outline-warning"><span class="fas fa-pen"></span></a>
               <a href="<?php echo base_url()?>articulos/eliminar/<?php echo $articulo->codigo;?>/<?php echo $articulo->imagen ?>" class="btn btn-outline-danger"><span class="fas fa-trash"></span></a>
             </td>
           </tr>
